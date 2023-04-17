@@ -22,13 +22,10 @@ public class Functionalities {
 
     public void csvToJson() throws IOException {
         try {
-            JFileChooser fileChooser = new JFileChooser();
-            int returnValue = fileChooser.showOpenDialog(null);
-            String filePath = null;
-            if (returnValue == JFileChooser.APPROVE_OPTION) {
-                filePath = fileChooser.getSelectedFile().getPath();
-            }
 
+            Scanner scanner1 = new Scanner(System.in);
+            logger.log(Level.INFO, "Por favor indique o PATH do ficheiro que pretende converter para JSON: ");
+            String filePath = scanner1.nextLine();
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
 
             // Ler a primeira linha e definir os nomes das colunas
@@ -57,9 +54,9 @@ public class Functionalities {
             }
             jsonObject.put("aulas", jsonArray);
 
-            Scanner scanner = new Scanner(System.in);
+            Scanner scanner2 = new Scanner(System.in);
             logger.log(Level.INFO, "Por favor indique o PATH onde pretende guardar o ficheiro JSON: ");
-            String path = scanner.nextLine();
+            String path = scanner2.nextLine();
 
             FileWriter writer = new FileWriter(path);
             gson.toJson(jsonObject.toMap(), writer);
@@ -78,12 +75,9 @@ public class Functionalities {
 
         // Try block to check for exceptions
         try {
-
-            JFileChooser fileChooser = new JFileChooser();
-            int returnValue = fileChooser.showOpenDialog(null);
-            String filePath = null;
-            if (returnValue == JFileChooser.APPROVE_OPTION)
-                filePath = fileChooser.getSelectedFile().getPath();
+            Scanner scanner1 = new Scanner(System.in);
+            logger.log(Level.INFO, "Por favor indique o PATH do ficheiro que pretende converter para CSV: ");
+            String filePath = scanner1.nextLine();
 
             // Step 1: Reading the contents of the JSON file using readAllBytes() method and storing the result in a string
             jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
@@ -95,9 +89,9 @@ public class Functionalities {
             JSONArray docs = jsonObject.getJSONArray("aulas");
 
             // Step 4: Create a new CSV file using the package java.io.File
-            Scanner scanner = new Scanner(System.in);
+            Scanner scanner2 = new Scanner(System.in);
             logger.log(Level.INFO, "Por favor indique o PATH onde pretende guardar o ficheiro CSV: ");
-            String path = scanner.nextLine();
+            String path = scanner2.nextLine();
             File file = new File(path);
 
 

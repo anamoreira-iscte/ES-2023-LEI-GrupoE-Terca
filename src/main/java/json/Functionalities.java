@@ -32,7 +32,7 @@ public class Functionalities {
             String filePath = scanner1.nextLine();
 
             BufferedReader reader = getReader(filePath);
-            if (reader.equals(null))
+            if (reader==null)
                 return;
             // Ler a primeira linha e definir os nomes das colunas
             String primeiraLinha = reader.readLine();
@@ -85,7 +85,7 @@ public class Functionalities {
             String filePath = scanner1.nextLine();
 
             jsonString = getJsonString(filePath);
-            if (jsonString.equals(null))
+            if (jsonString==null)
                 return;
             jsonObject = new JSONObject(jsonString);
             JSONArray docs = jsonObject.getJSONArray("aulas");
@@ -135,6 +135,7 @@ public class Functionalities {
     public BufferedReader getReader(String filePath) throws FileNotFoundException {
         BufferedReader reader;
         try {
+            URL url = new URL(filePath);
             String newPath = copyURLToFile(filePath, "CSV");
             if (newPath == null) {
                 logger.log(Level.INFO, erroCSV);
@@ -152,7 +153,9 @@ public class Functionalities {
     public String getJsonString (String filePath) {
         String jsonString;
         try {
+            URL url = new URL(filePath);
             String newPath = copyURLToFile(filePath, "JSON");
+
             if (newPath == null) {
                 logger.log(Level.INFO, erroJSON);
                 return null;

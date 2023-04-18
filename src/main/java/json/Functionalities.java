@@ -127,7 +127,6 @@ public class Functionalities {
             String path = scanner2.nextLine();
             File file = new File(path);
 
-
             // Step 5: Produce a comma delimited text from the JSONArray of JSONObjects and write the string to the newly created CSV file
             String csvString = CDL.toString(docs);
             FileUtils.writeStringToFile(file, csvString);

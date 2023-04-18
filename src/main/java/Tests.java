@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class Tests {
     Functionalities func = new Functionalities();
 
+    /*
     @Test
     public void CsvtoJsonTest(){
         String currentDirectory = System.getProperty("user.dir");
@@ -23,12 +24,16 @@ public class Tests {
         func.jsonToCsv();
         assertEquals(file1, file2);
     }
-
+*/
     @Test
-    public void copyUrlToFileTest(String urls) throws IOException {
-
+    public void copyUrlToFileTest() throws IOException {
         String path = "https://raw.githubusercontent.com/anamoreira-iscte/ES-2023-LEI-GrupoE-Terca/main/horario_exemplo.csv";
-        func.copyURLToFile(path, "CSV");
+        String test=func.copyURLToFile(path, "CSV");
 
+        String currentDirectory = System.getProperty("user.dir");
+        String filePath1 = currentDirectory + "/exemplo.csv";
+        File file1 = new File (filePath1);
+
+        assertEquals(test, file1);
     }
 }

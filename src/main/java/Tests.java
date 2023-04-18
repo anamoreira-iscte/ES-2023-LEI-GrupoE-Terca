@@ -1,34 +1,34 @@
-/*
+
 import json.Functionalities;
 
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
 public class Tests {
+    Functionalities func = new Functionalities();
 
     @Test
-    public void CsvtoJsonLocal(){
-        Functionalities func = new Functionalities();
+    public void CsvtoJsonTest(){
+        String currentDirectory = System.getProperty("user.dir");
+        String filePath1 = currentDirectory + "/arquivo.json";
+		File file1 = new File (filePath1);
+        String filePath2 = new String( "C:/Users/inesc/OneDrive - ISCTE-IUL/Documentos/Iscte/3º Ano/2º Semestre/ES/TestJSON00.json");
+        File file2 = new File (filePath2);
+        func.jsonToCsv();
+        assertEquals(file1, file2);
+    }
 
-        String input1 = "\"C:\\Users\\inesc\\OneDrive - ISCTE-IUL\\Documentos\\Iscte\\3º Ano\\2º Semestre\\ES\\ES-2023-LEI-GrupoE-Terca\\exemplo.csv\"";
-        String input2 = "\"C:\\Users\\inesc\\OneDrive - ISCTE-IUL\\Documentos\\Iscte\\3º Ano\\2º Semestre\\ES\\TestsCsvToJson.json\"";
+    @Test
+    public void copyUrlToFileTest(String urls) throws IOException {
 
-        // Create a ByteArrayInputStream to simulate user input
-        System.setIn(new ByteArrayInputStream(input1.getBytes()));
-        System.setIn(new ByteArrayInputStream(input2.getBytes()));
+        String path = "https://raw.githubusercontent.com/anamoreira-iscte/ES-2023-LEI-GrupoE-Terca/main/horario_exemplo.csv";
+        func.copyURLToFile(path, "CSV");
 
-        // Create a Scanner to read input from the ByteArrayInputStream
-        Scanner scanner = new Scanner(System.in);
-
-        // Call the method you want to test, passing in the Scanner
-        int result = func.csvToJson(scanner);
-        File json = new File()
-        assertEquals(result; "bla");
     }
 }
-*/

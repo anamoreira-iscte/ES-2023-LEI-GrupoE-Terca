@@ -180,7 +180,5 @@ public class Functionalities {
             return null;
         }
         return jsonString;
-
-        //teste de branchs
     }
 }
